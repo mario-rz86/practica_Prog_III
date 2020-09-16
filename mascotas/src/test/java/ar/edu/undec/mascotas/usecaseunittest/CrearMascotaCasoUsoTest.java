@@ -35,4 +35,21 @@ public class CrearMascotaCasoUsoTest {
         //Assert
         Assertions.assertTrue(resultado);
     }
+
+    @Test
+    void crearMascota_mascotaExiste_noCreaMascota(){
+        //Arrange
+        Mascota laMascota =  Mascota.instancia("toby","callejero", LocalDate.of(2005,1,1));
+        CrearMascotaCasoUso crearMascotaCasoUso = new CrearMascotaCasoUso(crearMascotaRepositorio);
+
+        //Simulo BD
+        when(crearMascotaRepositorio.existe(laMascota.getNombre())).thenReturn(false);
+        when(crearMascotaRepositorio.guardarMascota(laMascota)).thenReturn(false);
+
+        //Act
+        boolean resultado = crearMascotaCasoUso.crearMascota(laMascota);
+
+        //Assert
+        Assertions.assertTrue(resultado);
+    }
 }
