@@ -15,6 +15,13 @@ public class CrearMascotaCasoUso implements ICrearMascotaInput{
 
     @Override
     public boolean crearMascota(Mascota laMascota) {
-        return false;
+        if(crearMascotaRepositorio.existe(laMascota.getNombre())) {
+            return false;
+        }
+        else {
+            crearMascotaRepositorio.guardarMascota(laMascota);
+            return true;
+        }
+
     }
 }
