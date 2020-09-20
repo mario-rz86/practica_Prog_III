@@ -1,6 +1,7 @@
 package ar.edu.undec.mascotas.usecaseunittest;
 
 import ar.edu.undec.mascotas.casosUso.ModificarMascotaCasoUso;
+import ar.edu.undec.mascotas.casosUso.excepciones.MascotaIncompletaException;
 import ar.edu.undec.mascotas.casosUso.excepciones.ModificarMascotaException;
 import ar.edu.undec.mascotas.domain.Mascota;
 import ar.edu.undec.mascotas.repositorio.IConsultarMascotaPorNombreRepositorio;
@@ -25,7 +26,7 @@ public class ModificarMascotaCasoUsoTest {
     IConsultarMascotaPorNombreRepositorio consultarMascotaPorNombreRepositorio;
 
     @Test
-    void modificarMascota_DatosCorrectos_mascotaModificada() throws ModificarMascotaException {
+    void modificarMascota_DatosCorrectos_mascotaModificada() throws ModificarMascotaException, MascotaIncompletaException {
         Mascota mascotaAModificar = Mascota.instancia("batuque","pitbull", LocalDate.of(2019,6,15));
         Mascota mascotaDatosNuevos = Mascota.instancia("batuque","obejero belga", LocalDate.of(2019,6,15));
 

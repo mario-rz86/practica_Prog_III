@@ -1,5 +1,7 @@
 package ar.edu.undec.mascotas.domain;
 
+import ar.edu.undec.mascotas.casosUso.excepciones.MascotaIncompletaException;
+
 import java.time.LocalDate;
 
 public class Mascota {
@@ -13,7 +15,10 @@ public class Mascota {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public static Mascota instancia(String nombre, String raza, LocalDate fechaNacimiento) {
+    public static Mascota instancia(String nombre, String raza, LocalDate fechaNacimiento) throws MascotaIncompletaException {
+        if(nombre.isEmpty() || raza.isEmpty()) {
+            throw new MascotaIncompletaException();
+        }
         return new Mascota(nombre,raza,fechaNacimiento);
     }
 

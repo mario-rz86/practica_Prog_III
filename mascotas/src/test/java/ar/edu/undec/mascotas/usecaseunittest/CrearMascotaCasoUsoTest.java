@@ -1,6 +1,7 @@
 package ar.edu.undec.mascotas.usecaseunittest;
 
 import ar.edu.undec.mascotas.casosUso.CrearMascotaCasoUso;
+import ar.edu.undec.mascotas.casosUso.excepciones.MascotaIncompletaException;
 import ar.edu.undec.mascotas.domain.Mascota;
 import ar.edu.undec.mascotas.repositorio.ICrearMascotaRepositorio;
 import mockito.MockitoExtension;
@@ -20,7 +21,7 @@ public class CrearMascotaCasoUsoTest {
     ICrearMascotaRepositorio crearMascotaRepositorio;
 
     @Test
-    void crearMascota_mascotaNoExiste_creaMascota(){
+    void crearMascota_mascotaNoExiste_creaMascota() throws MascotaIncompletaException {
         //Arrange
         Mascota laMascota =  Mascota.instancia("toby","callejero", LocalDate.of(2005,1,1));
         CrearMascotaCasoUso crearMascotaCasoUso = new CrearMascotaCasoUso(crearMascotaRepositorio);
@@ -37,7 +38,7 @@ public class CrearMascotaCasoUsoTest {
     }
 
     @Test
-    void crearMascota_mascotaExiste_noCreaMascota(){
+    void crearMascota_mascotaExiste_noCreaMascota() throws MascotaIncompletaException {
         //Arrange
         Mascota laMascota =  Mascota.instancia("toby","callejero", LocalDate.of(2005,1,1));
         CrearMascotaCasoUso crearMascotaCasoUso = new CrearMascotaCasoUso(crearMascotaRepositorio);
