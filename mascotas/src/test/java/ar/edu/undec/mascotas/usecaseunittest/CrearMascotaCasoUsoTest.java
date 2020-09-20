@@ -20,7 +20,7 @@ public class CrearMascotaCasoUsoTest {
     ICrearMascotaRepositorio crearMascotaRepositorio;
 
     @Test
-    void crearMascota_mascotaNoExiste_crearMascota(){
+    void crearMascota_mascotaNoExiste_creaMascota(){
         //Arrange
         Mascota laMascota =  Mascota.instancia("toby","callejero", LocalDate.of(2005,1,1));
         CrearMascotaCasoUso crearMascotaCasoUso = new CrearMascotaCasoUso(crearMascotaRepositorio);

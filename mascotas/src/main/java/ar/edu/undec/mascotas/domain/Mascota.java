@@ -4,8 +4,8 @@ import java.time.LocalDate;
 
 public class Mascota {
     private String  nombre;
-    private final String raza;
-    private final LocalDate fechaNacimiento;
+    private String raza;
+    private LocalDate fechaNacimiento;
 
     private Mascota(String nombre, String raza, LocalDate fechaNacimiento) {
         this.nombre = nombre;
@@ -20,8 +20,22 @@ public class Mascota {
     public String getNombre() {
         return nombre;
     }
+    public String getRaza() { return raza; }
+    public LocalDate getFechaNacimiento() { return fechaNacimiento; }
+
+
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public void modificarDatos(Mascota mascotaDatosNuevos) {
+        this.nombre = mascotaDatosNuevos.getNombre();
+        this.raza = mascotaDatosNuevos.getRaza();
+        this.fechaNacimiento = mascotaDatosNuevos.getFechaNacimiento();
+    }
+
+
+
+
 }
