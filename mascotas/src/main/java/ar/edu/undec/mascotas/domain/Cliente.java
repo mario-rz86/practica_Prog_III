@@ -26,4 +26,18 @@ public class Cliente {
     }
 
     public String getDni() { return dni; }
+    public String getApellido() { return apellido; }
+    public String getNombre() { return nombre; }
+    public LocalDate getFechaNacimiento() { return fechaNacimiento; }
+
+    public void modificarDatos(Cliente clienteDatosNuevos) {
+        this.apellido = clienteDatosNuevos.getApellido();
+        this.nombre = clienteDatosNuevos.getNombre();
+        this.dni = clienteDatosNuevos.getDni();
+        this.fechaNacimiento = clienteDatosNuevos.getFechaNacimiento();
+    }
+
+
+
+
 }
