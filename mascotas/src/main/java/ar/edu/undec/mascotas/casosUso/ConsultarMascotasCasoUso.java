@@ -16,7 +16,7 @@ public class ConsultarMascotasCasoUso implements IConsultarMascotasInput {
 
 
     @Override
-    public Collection<Mascota> ConsultarCeuntas() {
+    public Collection<Mascota> ConsultarMascotas() {
         return this.consultarMascotasRepositorio.findAll();
     }
 }

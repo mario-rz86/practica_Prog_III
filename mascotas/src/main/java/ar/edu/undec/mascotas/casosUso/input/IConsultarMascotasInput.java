@@ -6,6 +6,6 @@ import java.util.Collection;
 
 public interface IConsultarMascotasInput {
 
-    Collection<Mascota> ConsultarCeuntas();
+    Collection<Mascota> ConsultarMascotas();
 
 }

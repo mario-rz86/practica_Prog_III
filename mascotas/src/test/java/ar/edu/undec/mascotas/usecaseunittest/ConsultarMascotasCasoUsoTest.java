@@ -12,7 +12,6 @@ import org.mockito.Mock;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import static org.mockito.Mockito.when;
@@ -29,7 +28,7 @@ public class ConsultarMascotasCasoUsoTest {
         when(consultarMascotasRepositorio.findAll()).thenReturn(factoryCuentas());
         ConsultarMascotasCasoUso consultarMascotasCasoUso = new ConsultarMascotasCasoUso(consultarMascotasRepositorio);
 
-        List<Mascota> mascotasConsultadas = (List<Mascota>) consultarMascotasCasoUso.ConsultarCeuntas();
+        List<Mascota> mascotasConsultadas = (List<Mascota>) consultarMascotasCasoUso.ConsultarMascotas();
         Assertions.assertEquals(2, mascotasConsultadas.size());
 
     }
