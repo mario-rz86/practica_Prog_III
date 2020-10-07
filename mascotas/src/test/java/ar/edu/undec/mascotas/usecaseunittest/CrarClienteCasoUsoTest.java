@@ -4,7 +4,9 @@ package ar.edu.undec.mascotas.usecaseunittest;
 
 import ar.edu.undec.mascotas.casosUso.CrearClienteCasoUso;
 import ar.edu.undec.mascotas.casosUso.CrearMascotaCasoUso;
+import ar.edu.undec.mascotas.casosUso.excepciones.ClienteExisteException;
 import ar.edu.undec.mascotas.casosUso.excepciones.ClienteIncompletoException;
+import ar.edu.undec.mascotas.casosUso.excepciones.MascotaExisteException;
 import ar.edu.undec.mascotas.domain.Cliente;
 import ar.edu.undec.mascotas.repositorio.ICrearClienteRepositorio;
 import mockito.MockitoExtension;
@@ -24,7 +26,7 @@ public class CrarClienteCasoUsoTest {
 
     @Test
     void crearCliente_clienteNoExiste_creaCliente() throws
-            ClienteIncompletoException {
+            ClienteIncompletoException, ClienteExisteException {
         //Arrange
         Cliente elCliente =  Cliente.instancia("mercado","emmanuel", "33128695",LocalDate.of(1987,1,27));
         CrearClienteCasoUso crearClienteCasoUso = new CrearClienteCasoUso(crearClienteRepositorio);
@@ -48,14 +50,12 @@ public class CrarClienteCasoUsoTest {
         CrearClienteCasoUso crearClienteCasoUso = new CrearClienteCasoUso(crearClienteRepositorio);
 
         //Simulo BD
-        when(crearClienteRepositorio.existe(elCliente.getDni())).thenReturn(false);
-        when(crearClienteRepositorio.guardarCliente(elCliente)).thenReturn(false);
+        when(crearClienteRepositorio.existe(elCliente.getDni())).thenReturn(true);
 
-        //Act
-        boolean resultado = crearClienteCasoUso.crearCliente(elCliente);
 
-        //Assert
-        Assertions.assertTrue(resultado);
+
+        //Act & Assert
+        Assertions.assertThrows(ClienteExisteException.class,()->crearClienteCasoUso.crearCliente(elCliente));
     }
 
 }

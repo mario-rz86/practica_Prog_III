@@ -1,6 +1,7 @@
 package ar.edu.undec.mascotas.usecaseunittest;
 
 import ar.edu.undec.mascotas.casosUso.CrearMascotaCasoUso;
+import ar.edu.undec.mascotas.casosUso.excepciones.MascotaExisteException;
 import ar.edu.undec.mascotas.casosUso.excepciones.MascotaIncompletaException;
 import ar.edu.undec.mascotas.domain.Mascota;
 import ar.edu.undec.mascotas.repositorio.ICrearMascotaRepositorio;
@@ -21,7 +22,7 @@ public class CrearMascotaCasoUsoTest {
     ICrearMascotaRepositorio crearMascotaRepositorio;
 
     @Test
-    void crearMascota_mascotaNoExiste_creaMascota() throws MascotaIncompletaException {
+    void crearMascota_mascotaNoExiste_creaMascota() throws MascotaIncompletaException, MascotaExisteException {
         //Arrange
         Mascota laMascota =  Mascota.instancia("toby","callejero", LocalDate.of(2005,1,1));
         CrearMascotaCasoUso crearMascotaCasoUso = new CrearMascotaCasoUso(crearMascotaRepositorio);
@@ -44,13 +45,12 @@ public class CrearMascotaCasoUsoTest {
         CrearMascotaCasoUso crearMascotaCasoUso = new CrearMascotaCasoUso(crearMascotaRepositorio);
 
         //Simulo BD
-        when(crearMascotaRepositorio.existe(laMascota.getNombre())).thenReturn(false);
-        when(crearMascotaRepositorio.guardarMascota(laMascota)).thenReturn(false);
+        when(crearMascotaRepositorio.existe("toby")).thenReturn(true);
 
-        //Act
-        boolean resultado = crearMascotaCasoUso.crearMascota(laMascota);
+        //Act & Assert
+        Assertions.assertThrows(MascotaExisteException.class,()->crearMascotaCasoUso.crearMascota(laMascota));
 
-        //Assert
-        Assertions.assertTrue(resultado);
+
+
     }
 }
