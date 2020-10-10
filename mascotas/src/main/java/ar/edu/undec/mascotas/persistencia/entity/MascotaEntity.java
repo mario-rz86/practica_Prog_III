@@ -8,9 +8,10 @@ import java.time.LocalDate;
 public class MascotaEntity {
 
     @Id
-    @Column(name = "idmascota ")
-    private Integer idMascota;
+    @Column(name = "idmascota")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "mascotas_id_seq")
+    private Integer idMascota;
+
 
     @Column(name = "nombre")
     private String  nombre;

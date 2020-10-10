@@ -25,7 +25,7 @@ public class ConsultarMascotasCasoUsoTest {
     @Test
     public void consultarMascotas_ExistenMascotas_DevuelveLista(){
 
-        when(consultarMascotasRepositorio.findAll()).thenReturn(factoryCuentas());
+        when(consultarMascotasRepositorio.findAll()).thenReturn(factoryMascotas());
         ConsultarMascotasCasoUso consultarMascotasCasoUso = new ConsultarMascotasCasoUso(consultarMascotasRepositorio);
 
         List<Mascota> mascotasConsultadas = (List<Mascota>) consultarMascotasCasoUso.ConsultarMascotas();
@@ -33,7 +33,7 @@ public class ConsultarMascotasCasoUsoTest {
 
     }
 
-    List<Mascota> factoryCuentas() {
+    List<Mascota> factoryMascotas() {
         List<Mascota> mascotas = new ArrayList<>();
         try {
             mascotas.add(Mascota.instancia("terry","bull terrier", LocalDate.of(2012,02,3)));

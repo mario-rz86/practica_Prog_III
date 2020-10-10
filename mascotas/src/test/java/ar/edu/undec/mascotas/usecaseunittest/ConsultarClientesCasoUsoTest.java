@@ -25,7 +25,7 @@ import static org.mockito.Mockito.when;
 public class ConsultarClientesCasoUsoTest {
     @Mock
     IConsultarClientesRepositorio consultarClientesRepositorio;
-    IConsultarMascotasRepositorio consultarMascotasRepositorio;
+    //IConsultarMascotasRepositorio consultarMascotasRepositorio;
 
     public ConsultarClientesCasoUsoTest() throws MascotaIncompletaException {
     }
@@ -41,7 +41,7 @@ public class ConsultarClientesCasoUsoTest {
 
     }
     Mascota laMascota1 =  Mascota.instancia("toby","callejero", LocalDate.of(2005,1,1));
-    Mascota laMascota2 =  Mascota.instancia("toby","caniche", LocalDate.of(2013,5,12));
+    Mascota laMascota2 =  Mascota.instancia("batuque","caniche", LocalDate.of(2013,5,12));
     List<Cliente> factoryClientes() {
 
         List<Mascota> mascotaList1 =Collections.singletonList(laMascota1);
