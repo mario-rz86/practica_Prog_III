@@ -5,7 +5,6 @@ import ar.edu.undec.mascotas.domain.Mascota;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.List;
 
 @Entity(name = "clientes")
