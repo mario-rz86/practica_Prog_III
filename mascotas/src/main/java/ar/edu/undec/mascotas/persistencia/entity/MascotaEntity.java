@@ -1,5 +1,7 @@
 package ar.edu.undec.mascotas.persistencia.entity;
 
+import ar.edu.undec.mascotas.domain.Cliente;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -19,6 +21,10 @@ public class MascotaEntity {
     private String raza;
     @Column(name = "fechanacimiento")
     private LocalDate fechaNacimiento;
+
+    @ManyToOne
+    @JoinColumn(name = "id", referencedColumnName = "idcliente")
+    private ClienteEntity cliente;
 
     public MascotaEntity() {
     }
@@ -53,5 +59,13 @@ public class MascotaEntity {
 
     public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
     }
 }
