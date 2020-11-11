@@ -1,9 +1,9 @@
 package ar.edu.undec.mascotas.usecaseunittest;
 
-import ar.edu.undec.mascotas.casosUso.ConsultarMascotasCasoUso;
-import ar.edu.undec.mascotas.casosUso.excepciones.MascotaIncompletaException;
-import ar.edu.undec.mascotas.domain.Mascota;
-import ar.edu.undec.mascotas.repositorio.IConsultarMascotasRepositorio;
+import ar.edu.undec.mascotas.core.casosUso.ConsultarMascotasCasoUso;
+import ar.edu.undec.mascotas.core.excepciones.MascotaIncompletaException;
+import ar.edu.undec.mascotas.core.domain.Mascota;
+import ar.edu.undec.mascotas.core.repositorio.IConsultarMascotasRepositorio;
 import mockito.MockitoExtension;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -12,7 +12,8 @@ import org.mockito.Mock;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.Collections;
 
 import static org.mockito.Mockito.when;
 
@@ -23,16 +24,29 @@ public class ConsultarMascotasCasoUsoTest {
     IConsultarMascotasRepositorio consultarMascotasRepositorio;
 
     @Test
-    public void consultarMascotas_ExistenMascotas_DevuelveLista(){
+    public void consultarMascotas_ExistenMascotas_DevuelveLista() throws MascotaIncompletaException {
 
-        when(consultarMascotasRepositorio.findAll()).thenReturn(factoryMascotas());
         ConsultarMascotasCasoUso consultarMascotasCasoUso = new ConsultarMascotasCasoUso(consultarMascotasRepositorio);
+        when(consultarMascotasRepositorio.findAll()).thenReturn(Collections.singletonList(Mascota.instancia("terry","bull terrier", LocalDate.of(2012,02,3))));
 
-        List<Mascota> mascotasConsultadas = (List<Mascota>) consultarMascotasCasoUso.ConsultarMascotas();
-        Assertions.assertEquals(2, mascotasConsultadas.size());
+        Collection<Mascota> mascotaList = consultarMascotasCasoUso.consultarMascotas();
+
+        Assertions.assertNotEquals(0, mascotaList.size());
 
     }
 
+    @Test
+    public void consultarMascotas_NoExistenMascotas_DevuelveListaVacia() throws MascotaIncompletaException {
+
+        ConsultarMascotasCasoUso consultarMascotasCasoUso = new ConsultarMascotasCasoUso(consultarMascotasRepositorio);
+        when(consultarMascotasRepositorio.findAll()).thenReturn(new ArrayList<>());
+
+        Collection<Mascota> mascotaList = consultarMascotasCasoUso.consultarMascotas();
+
+        Assertions.assertEquals(0, mascotaList.size());
+
+    }
+    /*
     List<Mascota> factoryMascotas() {
         List<Mascota> mascotas = new ArrayList<>();
         try {
@@ -44,7 +58,7 @@ public class ConsultarMascotasCasoUsoTest {
             e.printStackTrace();
         }
         return mascotas;
-    }
+    }*/
 
 
 }

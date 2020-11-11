@@ -1,9 +1,9 @@
 package ar.edu.undec.mascotas.persistencia;
 
-import ar.edu.undec.mascotas.domain.Mascota;
+import ar.edu.undec.mascotas.core.domain.Mascota;
 import ar.edu.undec.mascotas.persistencia.crud.ICrearMascotaCRUD;
 import ar.edu.undec.mascotas.persistencia.entity.MascotaEntity;
-import ar.edu.undec.mascotas.repositorio.ICrearMascotaRepositorio;
+import ar.edu.undec.mascotas.core.repositorio.ICrearMascotaRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ public class CrearMascotaRepoImpl implements ICrearMascotaRepositorio {
 
     @Override
     public boolean existe(String nombreMascota) {
-        return false;
+        return crearMascotaCRUD.existsByNombre(nombreMascota);
     }
 
     @Override

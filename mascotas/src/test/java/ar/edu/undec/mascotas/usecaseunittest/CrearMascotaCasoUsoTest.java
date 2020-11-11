@@ -1,10 +1,10 @@
 package ar.edu.undec.mascotas.usecaseunittest;
 
-import ar.edu.undec.mascotas.casosUso.CrearMascotaCasoUso;
-import ar.edu.undec.mascotas.casosUso.excepciones.MascotaExisteException;
-import ar.edu.undec.mascotas.casosUso.excepciones.MascotaIncompletaException;
-import ar.edu.undec.mascotas.domain.Mascota;
-import ar.edu.undec.mascotas.repositorio.ICrearMascotaRepositorio;
+import ar.edu.undec.mascotas.core.casosUso.CrearMascotaCasoUso;
+import ar.edu.undec.mascotas.core.excepciones.MascotaExisteException;
+import ar.edu.undec.mascotas.core.excepciones.MascotaIncompletaException;
+import ar.edu.undec.mascotas.core.domain.Mascota;
+import ar.edu.undec.mascotas.core.repositorio.ICrearMascotaRepositorio;
 import mockito.MockitoExtension;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

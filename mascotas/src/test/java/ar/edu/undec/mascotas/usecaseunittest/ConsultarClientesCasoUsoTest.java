@@ -1,12 +1,11 @@
 package ar.edu.undec.mascotas.usecaseunittest;
 
-import ar.edu.undec.mascotas.casosUso.ConsultarClientesCasoUso;
-import ar.edu.undec.mascotas.casosUso.excepciones.ClienteIncompletoException;
-import ar.edu.undec.mascotas.casosUso.excepciones.MascotaIncompletaException;
-import ar.edu.undec.mascotas.domain.Cliente;
-import ar.edu.undec.mascotas.domain.Mascota;
-import ar.edu.undec.mascotas.repositorio.IConsultarClientesRepositorio;
-import ar.edu.undec.mascotas.repositorio.IConsultarMascotasRepositorio;
+import ar.edu.undec.mascotas.core.casosUso.ConsultarClientesCasoUso;
+import ar.edu.undec.mascotas.core.excepciones.ClienteIncompletoException;
+import ar.edu.undec.mascotas.core.excepciones.MascotaIncompletaException;
+import ar.edu.undec.mascotas.core.domain.Cliente;
+import ar.edu.undec.mascotas.core.domain.Mascota;
+import ar.edu.undec.mascotas.core.repositorio.IConsultarClientesRepositorio;
 import mockito.MockitoExtension;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -15,7 +14,6 @@ import org.mockito.Mock;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 

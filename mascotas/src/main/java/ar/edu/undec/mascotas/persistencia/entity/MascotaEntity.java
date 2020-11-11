@@ -1,7 +1,5 @@
 package ar.edu.undec.mascotas.persistencia.entity;
 
-import ar.edu.undec.mascotas.domain.Cliente;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -23,11 +21,15 @@ public class MascotaEntity {
     private LocalDate fechaNacimiento;
 
     @ManyToOne
-    @JoinColumn(name = "id", referencedColumnName = "idcliente")
+    @JoinColumn(name = "idcliente", referencedColumnName = "idcliente")
     private ClienteEntity cliente;
 
     public MascotaEntity() {
     }
+
+    public MascotaEntity(Integer idMascota, String nombre, String raza, LocalDate fechaNacimiento, ClienteEntity clienteBD) {
+    }
+
 
     public Integer getIdMascota() {
         return idMascota;

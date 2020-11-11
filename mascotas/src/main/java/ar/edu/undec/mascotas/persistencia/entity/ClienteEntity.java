@@ -1,8 +1,6 @@
 package ar.edu.undec.mascotas.persistencia.entity;
 
 
-import ar.edu.undec.mascotas.domain.Mascota;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -25,7 +23,7 @@ public class ClienteEntity {
     @Column(name = "fechanacimiento")
     private LocalDate fechaNacimiento;
 
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<MascotaEntity> mascotas;
 
     public ClienteEntity() {
